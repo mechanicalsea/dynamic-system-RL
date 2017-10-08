@@ -86,7 +86,7 @@ class ac_Q_learning(object):
 
 			if ep == 0: self.total_r.append(ep_r)
 			else: self.total_r.append(self.total_r[-1] * 0.9 + ep_r * 0.1)
-			#print('\rEp: %6d, Ep_r: %.0f' % (ep, ep_r), end='')
+			# print('\rEp: %6d, Ep_r: %.0f' % (ep, ep_r), end='')
 			print('Ep: %d, Ep_r: %.0f' % (ep, ep_r))
 
 	def plot_reward(self):
@@ -107,10 +107,10 @@ if __name__ == '__main__':
 		print(env.n_features)
 	env.n_features = 3
 	ppo = PPO(3, 1)
-	qlearning = ac_Q_learning(agent=ppo, env=env)
+	qlearning = ac_Q_learning(n_episodes=100, agent=ppo, env=env)
 	start = time.time()
 	qlearning.main_loop()
 	end = time.time()
-	print('It takes %.0f' % (end-start))
-	qlearning.plot_reward()
+	print('\nIt takes %.0f' % (end-start))
+	#qlearning.plot_reward()
 		
